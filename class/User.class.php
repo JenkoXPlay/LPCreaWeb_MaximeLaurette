@@ -5,19 +5,22 @@
         protected $id;
         protected $email;
         protected $pseudo;
-        protected $password;
-        protected $admin;
-        protected $date_inscription;
+        protected $mdp;
+        protected $administrator;
+        protected $dateInscription;
         protected $actif;
         
-        public function __construct($id, $email, $pseudo, $password, $admin, $date_inscription, $actif) {
-            $this->setId($id);
-            $this->setEmail($email);
-            $this->setPseudo($pseudo);
-            $this->setPassword($password);
-            $this->setAdmin($admin);
-            $this->setDateInscription($date_inscription);
-            $this->setActif($actif);
+        public function __construct(array $donnees) {
+            $this->hydrate($donnees);
+        }
+
+        public function hydrate(array $donnees) {
+            foreach($donnees as $key => $value) {
+                $method = 'set'.ucfirst($key);
+                if(method_exists($this, $method)){
+                    $this->$method($value);
+                }
+            }
         }
 
         public function getId(){
@@ -25,7 +28,7 @@
         }
 
         public function setId($id){
-            $this->id = $id;
+            $this->id = (int) $id;
         }
 
         public function getEmail(){
@@ -44,28 +47,28 @@
             $this->pseudo = $pseudo;
         }
 
-        public function getPassword(){
-            return $this->password;
+        public function getMdp(){
+            return $this->mdp;
         }
 
-        public function setPassword($password){
-            $this->password = $password;
+        public function setMdp($mdp){
+            $this->mdp = $mdp;
         }
 
-        public function getAdmin(){
-            return $this->admin;
+        public function getAdministrator(){
+            return $this->administrator;
         }
 
-        public function setAdmin($admin){
-            $this->admin = $admin;
+        public function setAdministrator($administrator){
+            $this->administrator = $administrator;
         }
 
         public function getDateInscription(){
-            return $this->date_inscription;
+            return $this->dateInscription;
         }
 
-        public function setDateInscription($date_inscription){
-            $this->date_inscription = $date_inscription;
+        public function setDateInscription($dateInscription){
+            $this->dateInscription = $dateInscription;
         }
 
         public function getActif(){
