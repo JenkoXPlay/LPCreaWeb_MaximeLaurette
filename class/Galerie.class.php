@@ -1,12 +1,12 @@
 <?php
 
-    class Commentaire {
+    class Galerie {
 
         protected $id;
-        protected $texte;
-        protected $date_create;
+        protected $titre;
+        protected $description;
+        protected $date_creation;
         protected $id_user_create;
-        protected $id_photo;
 
         public function __construct(array $donnees) {
             $this->hydrate($donnees);
@@ -29,20 +29,28 @@
             this.$id = $id;
         }
 
-        public protected getTexte() {
-            return this.$texte;
+        public protected getTitre() {
+            return this.$titre;
         }
 
-        public void setTexte(protected $texte) {
-            this.$texte = $texte;
+        public void setTitre(protected $titre) {
+            this.$titre = $titre;
         }
 
-        public protected getDate_create() {
-            return this.$date_create;
+        public protected getDescription() {
+            return this.$description;
         }
 
-        public void setDate_create(protected $date_create) {
-            this.$date_create = $date_create;
+        public void setDescription(protected $description) {
+            this.$description = $description;
+        }
+
+        public protected getDate_creation() {
+            return this.$date_creation;
+        }
+
+        public void setDate_creation(protected $date_creation) {
+            this.$date_creation = $date_creation;
         }
 
         public protected getId_user_create() {
@@ -52,14 +60,6 @@
         public void setId_user_create(protected $id_user_create) {
             this.$id_user_create = $id_user_create;
         }
-
-        public protected getId_photo() {
-            return this.$id_photo;
-        }
-
-        public void setId_photo(protected $id_photo) {
-            this.$id_photo = $id_photo;
-        }        
 
     }
 
