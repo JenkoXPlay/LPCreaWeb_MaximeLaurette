@@ -28,6 +28,12 @@
             ]);
         }
 
+        // Suppression des tag
+        public function deleteAll() {
+            $req = $this->getBd()->prepare("DELETE FROM tag");
+            $req->execute();
+        }
+
         // Suppression d'un tag
         public function delete(TagPhoto $tagphoto) {
             $req = $this->getBd()->prepare("DELETE FROM tag WHERE id = :id");

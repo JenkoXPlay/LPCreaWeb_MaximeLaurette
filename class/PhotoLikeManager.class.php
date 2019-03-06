@@ -35,8 +35,14 @@
             $req->execute();
         }
 
+        // Suppression des photolike
+        public function deleteAll() {
+            $req = $this->getBd()->prepare("DELETE FROM photo_like");
+            $req->execute();
+        }
+
         // tous les photo_like
-        public function getList() {
+        public function getListLike() {
             $req = $this->getBd()->prepare("SELECT * FROM photo_like");
             $req->execute();
             $text = "";
@@ -49,7 +55,7 @@
         }
 
         // info d'un photo_like
-        public function getInfo(PhotoLike $photolike) {
+        public function getInfoLike(PhotoLike $photolike) {
             $req = $this->getBd()->prepare("SELECT * FROM photo_like WHERE id = :id");
             $req->execute();
             $text = "";
